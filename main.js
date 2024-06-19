@@ -32,13 +32,22 @@ function handleSound() {
 
 toggleButton.addEventListener("click", handleSound);
 
-const menuItems = document.querySelectorAll("#menu ul li");
+const menuItems = document.querySelectorAll("#menu ul li a");
+console.log(menuItems.length);
+
 menuItems.forEach((item, index) => {
-    gsap.to(item, {
-        rotation: 0,
-        x: 10 * (index + 1),
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
+    item.addEventListener("mouseenter", () => {
+        gsap.to(item, {
+            rotation: 0,
+            y: -5,
+            duration: 0.3,
+        });
+    });
+    item.addEventListener("mouseleave", () => {
+        gsap.to(item, {
+            rotation: 0,
+            y: 0,
+            duration: 0.3,
+        });
     });
 });
